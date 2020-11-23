@@ -1,0 +1,42 @@
+$main-color: #4EB290;
+$main-font-color: white;
+.situation{
+    &-contents{
+        padding: 10px;
+        border: 1px solid #eee;
+    }
+    &-title{
+        background: $main-color;
+        display: inline-block;
+        padding: 0 10px;
+        font-size: 12pt;
+        color: $main-font-color;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    &-list{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    &-list > li{
+        margin: 20px 0;
+        display: flex;
+        flex: auto;
+        min-width: 25%;
+        flex-direction: column;
+        color: $main-color;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        & h3{
+            font-size: 1.2em;
+        }
+        & p{
+            font-size: 0.8em;
+        }
+        & b{
+            font-weight: 500;
+            font-size: 15px;
+        }
+    }
+}
