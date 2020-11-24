@@ -19,8 +19,10 @@ function Test({match}){
             window.speechSynthesis.speak(speechMsg)
         }
         else{
-            if(document.getElementsByClassName("news-list")[0].scrollTop==0)
+            if(document.getElementsByClassName("news-list")[0].scrollTop==0){
+                window.speechSynthesis.cancel();
                 document.getElementById("main").style.transform="translate(0, 0)";
+            }
         }
     }
     return(
