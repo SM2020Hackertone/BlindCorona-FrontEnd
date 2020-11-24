@@ -40,16 +40,20 @@ function Situation({props}) {
                 "사망자 수" + res.data.data.deathCnt + "명 " +
                 "누적 확진률" + res.data.data.qurRate + "%";
                 
-                console.log('pass')
+                console.log('pass') 
                 console.log(window.speechSynthesis.speak(speechMsg));  
             })
             .catch((e)=>{
+                window.speechSynthesis.cancel();
                 const speechMsg = new SpeechSynthesisUtterance();
                 speechMsg.text="결과를 찾을수 없습니다 다시 말해주세요."
                 window.speechSynthesis.speak(speechMsg);
             })
         }else{
-
+            window.speechSynthesis.cancel();
+            const speechMsg = new SpeechSynthesisUtterance();
+            speechMsg.text="마이크를 사용하시려면 m버튼을 눌러주세요";
+            window.speechSynthesis.speak(speechMsg);
             dispatch(GetStatus("",""))
                 .then((res)=>{
                     setData(res.payload);
