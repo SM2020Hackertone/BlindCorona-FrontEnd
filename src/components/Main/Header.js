@@ -1,7 +1,8 @@
+import { Link} from "react-router-dom"
 function Header() {
     return (
         <div className="header">
-            Blind Corona
+            <Link to="/">BlindCorona</Link>
         </div>
     )
 }
