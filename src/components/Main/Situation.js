@@ -35,16 +35,25 @@ function Situation({props}) {
                 window.speechSynthesis.cancel();
 
                 const speechMsg = new SpeechSynthesisUtterance();
-                speechMsg.text=res.data.data.gubun + " " + 
+                speechMsg.text=props.text+"에 대한 검색결과 입니다." + res.data.data.gubun + " " + 
                 "신규 확진자수" + res.data.data.incDec + "명 " + 
                 "사망자 수" + res.data.data.deathCnt + "명 " +
                 "누적 확진률" + res.data.data.qurRate + "%";
                 
-                console.log('pass')
-                console.log(window.speechSynthesis.speak(speechMsg));
-                
+                console.log('pass') 
+                console.log(window.speechSynthesis.speak(speechMsg));  
+            })
+            .catch((e)=>{
+                window.speechSynthesis.cancel();
+                const speechMsg = new SpeechSynthesisUtterance();
+                speechMsg.text="결과를 찾을수 없습니다 다시 말해주세요."
+                window.speechSynthesis.speak(speechMsg);
             })
         }else{
+            window.speechSynthesis.cancel();
+            const speechMsg = new SpeechSynthesisUtterance();
+            speechMsg.text="마이크를 사용하시려면 m버튼을 눌러주세요";
+            window.speechSynthesis.speak(speechMsg);
             dispatch(GetStatus("",""))
                 .then((res)=>{
                     setData(res.payload);

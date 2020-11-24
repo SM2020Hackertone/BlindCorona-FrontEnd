@@ -13,9 +13,10 @@ function Test({ match }) {
             window.speechSynthesis.cancel();
             const speechMsg = new SpeechSynthesisUtterance();
             console.log(news);
-            news.news.map((i) => {
-                speechMsg.text += i.title;
+            news.news.map((i, index) => {
+                speechMsg.text += "\n\n" + (index + 1) + i.title;
             })
+            console.log(speechMsg);
             window.speechSynthesis.speak(speechMsg)
         }
         else {
