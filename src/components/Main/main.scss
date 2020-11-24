@@ -37,11 +37,14 @@ body::-webkit-scrollbar{
     bottom: 10px;
     z-index: 99;
     left: 50%;
+    transition: 1s;
     width: 80px;
     border-radius: 50%;
     height: 80px;
     transform: translateX(-50%);
-    border: 1px solid #eee;
+    cursor: pointer;
+    background-size: 100%;
+    background-image: url("../../icon_arrow.png");
 
 }
 .header{
@@ -58,7 +61,7 @@ body::-webkit-scrollbar{
     background-repeat: no-repeat;
     height: calc( 92.5vh - 31px );
     background-position-y: 100px;
-    background-image: url("./situation.png");
+    // background-image: url("./situation.png");
 
 
     &-wrapper{

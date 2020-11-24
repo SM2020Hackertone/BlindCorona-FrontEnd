@@ -11,8 +11,8 @@ function SituationCard({unit, dataType}){
     const DarkMode = useSelector(state => state.user.success);
     return(
         <div onClick={clickEvent}>
-            <h3 id="Unit" style={DarkMode? {color: "black"} : {color:"white"}}><CountUp duration={0.6} separator="," end={unit}></CountUp> / <b>{ dataType=="누적 확진률"? "%" : "명"}</b></h3>
-            <p style={DarkMode? {color: "black"} : {color:"white"}} id="dataType">{dataType}</p>
+            <h3 id="Unit" style={DarkMode? {color:"white"} : {color: "black"}}><CountUp duration={0.6} separator="," end={unit}></CountUp> / <b>{ dataType=="누적 확진률"? "%" : "명"}</b></h3>
+            <p style={DarkMode? {color:"white"} :  {color: "black"}} id="dataType">{dataType}</p>
         </div>
     )
 }

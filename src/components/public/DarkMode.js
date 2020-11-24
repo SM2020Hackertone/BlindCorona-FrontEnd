@@ -7,10 +7,12 @@ function DarkModeC(){
     const [mode,setMode] = useState(true);
     const dispatch=useDispatch();
     useEffect(()=>{
+      document.body.style.backgroundColor="black";
+      document.getElementsByClassName("situation-wrapper")[0].style.backgroundColor="black"
       dispatch(DarkMode(mode));
     },[])
     function modeHandler(e){
-      if(e.target.checked==false){
+      if(e.target.checked==true){
         document.body.style.backgroundColor="black";
         document.getElementsByClassName("situation-wrapper")[0].style.backgroundColor="black"
         dispatch(DarkMode(e.target.checked))
@@ -25,8 +27,9 @@ function DarkModeC(){
     return(
         <label className="high">
             <input checked={mode} onChange={modeHandler} type="checkbox"></input>
-            <NormalSvg></NormalSvg>
             <HighSvg></HighSvg>
+            <NormalSvg></NormalSvg>
+            
             
         </label>
     )

@@ -18,7 +18,7 @@ function News(){
     if(loading) return(<div>로딩중..</div>)
     if(!data) return(null);
     return(
-        <div style={DarkMode? {background: "#FF642A"} : {background:"black"}} className="news" >
+        <div style={DarkMode?  {background:"black"} : {background: "#FF642A"}} className="news" >
             <div className="news-wrapper">
                 <h3 className="news-header">뉴스</h3>
                 <ul className="news-list">
