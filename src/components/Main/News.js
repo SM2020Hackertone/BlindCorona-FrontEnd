@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetNews } from "../../actions/userAction";
 import NewsCard from "./NewsCard"
 function News(){
-    const DarkMode = useSelector(state => state.user.success);
+    const DarkMode = useSelector(state => state.user.darkmode);
     const dispatch=useDispatch();
     const [data,setData] = useState(null);
     const [loading,setLoading] = useState(false);

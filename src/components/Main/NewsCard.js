@@ -2,7 +2,7 @@ import {useEffect, useState} from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { GetContent, GetNews } from "../../actions/userAction";
 function NewsCard({props}){
-    const DarkMode = useSelector(state => state.user.success);
+    const DarkMode = useSelector(state => state.user.darkmode);
     const [state,setState]=useState("none");
     const [color,setColor]=useState("white");
     const dispatch=useDispatch();

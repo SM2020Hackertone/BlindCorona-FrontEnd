@@ -5,9 +5,9 @@ export default function (state = {}, action) {
     case GET_STATUS:
       return {...state, success: action.payload}
     case GET_NEWS:
-      return {...state, success: action.payload}
+      return {...state, news: action.payload}
     case DARK_MODE:
-      return {...state, success: action.payload}
+      return {...state, darkmode: action.payload}
     case GET_CONTENT:
       return {...state, success: action.payload}
     default:
