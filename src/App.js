@@ -14,7 +14,7 @@ function App() {
     if (Annyang) {
       var commands = {
         '영실아 *tag': (tag) => {
-          axios.get(`http://172.30.1.58:5000?text=${tag}`)
+          axios.get(`http://172.30.1.58:5000/corona-status?text=${tag}`)
           .then((res)=>{
             console.log(res);
           })
