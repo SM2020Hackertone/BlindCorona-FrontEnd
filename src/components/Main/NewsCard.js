@@ -19,7 +19,7 @@ function NewsCard({ props }) {
                 .then((res) => {
                     setData(res.payload.news);
                     console.log(res)
-                    window.speechSynthesis.clear();
+                    window.speechSynthesis.cancel();
                     const speechMsg = new SpeechSynthesisUtterance();
                     speechMsg.text = a.getMonth() + "월" + a.getDate() + "일 뉴스" + props.title + "   " + res.payload.news.content;
                     window.speechSynthesis.speak(speechMsg)
