@@ -6,16 +6,25 @@ function NewsCard({props}){
     const [state,setState]=useState("none");
     const [color,setColor]=useState("white");
     const dispatch=useDispatch();
-    const [data,setData] = useState(null);
-    const [loading,setLoading] = useState(false);
+    const [data,setData] = useState("");
     let a=new Date(props.pubDate);
     function showclose(){
         if(state==="none"){
+            const data={
+                link : props.link
+            }
             setState("news-active");
             setColor("checked");
-            const speechMsg = new SpeechSynthesisUtterance();
-            speechMsg.text=a.getMonth() + "월" +a.getDate() + "일 뉴스" + props.title + "   " + data.content;
-            window.speechSynthesis.speak(speechMsg)
+            dispatch(GetContent("",data))
+            .then((res)=>{
+                setData(res.payload.news);
+                console.log(res)
+                
+                const speechMsg = new SpeechSynthesisUtterance();
+                speechMsg.text=a.getMonth() + "월" +a.getDate() + "일 뉴스" + props.title + "   " + res.payload.news.content;
+                window.speechSynthesis.speak(speechMsg)
+            })
+            
         }
         else{
             setState("none");
@@ -23,20 +32,6 @@ function NewsCard({props}){
             window.speechSynthesis.cancel();
         }  
     } 
-    useEffect(()=>{
-        setLoading(true);
-        const data={
-            link : props.link
-        }
-        dispatch(GetContent("",data))
-            .then((res)=>{
-                setData(res.payload.news);
-                console.log(res)
-            })
-        setLoading(false);
-    },[])
-    if(loading) return(<div>로딩중..</div>)
-    if(!data) return(null);
     
     return(
         <li>

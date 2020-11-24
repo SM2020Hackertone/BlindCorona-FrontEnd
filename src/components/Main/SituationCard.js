@@ -5,6 +5,7 @@ function SituationCard({unit, dataType}){
     function clickEvent(){
         const speechMsg = new SpeechSynthesisUtterance();
         speechMsg.text=dataType + unit + "명";
+        
         window.speechSynthesis.speak(speechMsg)
     }
     const DarkMode = useSelector(state => state.user.success);

@@ -7,7 +7,7 @@ import { GET_INFO } from "./actions/ActionTypes"
 import { useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
 import axios from "axios"
-
+Annyang.setLanguage("ko");
 function App() {
   const stt=()=>{
     if (Annyang) {

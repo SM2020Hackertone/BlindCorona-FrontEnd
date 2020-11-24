@@ -25,9 +25,6 @@ function Test({match}){
                         <div className="background-div">
 
                         </div>
-                        <div>
-                            <h3 className="situation-title">전국</h3>
-                        </div>
                         <Situation props={match.params}></Situation>
                     </div>
                 </div>

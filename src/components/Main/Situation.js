@@ -32,6 +32,17 @@ function Situation({props}) {
             .then((res)=>{
                 setData(res.data.data);
                 console.log(res.data.data);
+                window.speechSynthesis.cancel();
+
+                const speechMsg = new SpeechSynthesisUtterance();
+                speechMsg.text=res.data.data.gubun + " " + 
+                "신규 확진자수" + res.data.data.incDec + "명 " + 
+                "사망자 수" + res.data.data.deathCnt + "명 " +
+                "누적 확진률" + res.data.data.qurRate + "%";
+                
+                console.log('pass')
+                console.log(window.speechSynthesis.speak(speechMsg));
+                
             })
         }else{
             dispatch(GetStatus("",""))
@@ -44,19 +55,25 @@ function Situation({props}) {
     },[])
     if(loading) return(<div>로딩중..</div>)
     if(!data) return(null);
+    
     return(
-        <div className="situation-contents">
-            <div className="situation-list">
-                <SituationCard unit={data.incDec} dataType="신규 확진자수"></SituationCard>
-                <SituationCard unit={data.isolClearCnt} dataType="격리해제 수"></SituationCard>
-                <SituationCard unit={data.isolIngCnt} dataType="검사진행 수"></SituationCard>
-                <SituationCard unit={data.deathCnt} dataType="사망자 수"></SituationCard>
-                <SituationCard unit={data.careCnt} dataType="치료중인 환자 수"></SituationCard>
-                <SituationCard unit={data.accExamCnt} dataType="누적 검사 수"></SituationCard>  
-                <SituationCard unit={data.resutlNegCnt} dataType="결과 음성 수"></SituationCard>
-                <SituationCard unit={data.qurRate} dataType="누적 확진률"></SituationCard>   
+        <>
+            <div>
+                <h3 className="situation-title">{data.gubun}</h3>
             </div>
-        </div>
+            <div className="situation-contents">
+                <div className="situation-list">
+                    <SituationCard unit={data.incDec} dataType="신규 확진자수"></SituationCard>
+                    <SituationCard unit={data.isolClearCnt} dataType="격리해제 수"></SituationCard>
+                    <SituationCard unit={data.isolIngCnt} dataType="검사진행 수"></SituationCard>
+                    <SituationCard unit={data.deathCnt} dataType="사망자 수"></SituationCard>
+                    <SituationCard unit={data.careCnt} dataType="치료중인 환자 수"></SituationCard>
+                    <SituationCard unit={data.accExamCnt} dataType="누적 검사 수"></SituationCard>  
+                    <SituationCard unit={data.resutlNegCnt} dataType="결과 음성 수"></SituationCard>
+                    <SituationCard unit={data.qurRate} dataType="누적 확진률"></SituationCard>   
+                </div>
+            </div>
+        </>
     )
 }
 export default Situation;
