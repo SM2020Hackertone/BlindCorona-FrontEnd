@@ -61,10 +61,10 @@ body::-webkit-scrollbar{
 
 
     &-wrapper{
-        position: relative;
+        margin: 0 auto;
+        margin-top: 150px;
         width: 98%;
         background: white;
-        margin: 0 auto;
 
         .background-div{
             // position: relative;

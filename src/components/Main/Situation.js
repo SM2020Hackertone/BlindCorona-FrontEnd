@@ -25,6 +25,8 @@ function Situation({ props }) {
     const dispatch = useDispatch();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    const DarkMode = useSelector(state => state.user.darkmode)
     useEffect(() => {
         setLoading(true);
         if (props.text) {
@@ -67,10 +69,10 @@ function Situation({ props }) {
 
     return (
         <>
-            <div>
+            <div className='situation-title-wrapper'>
                 <h3 className="situation-title">{data.gubun}</h3>
             </div>
-            <div className="situation-contents">
+            <div className="situation-contents" style={DarkMode ? { background: "#1a1a1a" } : { background: "#ffffff" }}>
                 <div className="situation-list">
                     <SituationCard unit={data.incDec} dataType="신규 확진자수"></SituationCard>
                     <SituationCard unit={data.isolClearCnt} dataType="격리해제 수"></SituationCard>
