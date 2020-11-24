@@ -1,16 +1,82 @@
-$main-color: #4EB290;
-$main-font-color: white;
+$main-color: #FF642A;
+$main-font-color: #4EB290;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+body{
+    overflow: hidden;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+#root{
+    height: 100vh;
+}
+#main{
+    transition: 1s;
+}
+body::-webkit-scrollbar{
+    width: 0;
+}
+.high{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    width: 80px;
+    border-radius: 50%;
+    height: 80px;
+    cursor: pointer;
+    background: white;
+    border: 1px solid #eee;
+    & input{
+        display: none;
+    }
+    & input:checked + svg{
+        display: none;
+    }
+}
+.next{
+    position: fixed;
+    bottom: 10px;
+    z-index: 99;
+    left: 50%;
+    width: 80px;
+    border-radius: 50%;
+    height: 80px;
+    transform: translateX(-50%);
+    border: 1px solid #eee;
+
+}
+.header{
+    text-align: center;
+    border-bottom: 1px solid #FF642A;
+    color: #FF642A;
+    padding: 10px 0;
+    font-size: 6.5vh;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 .situation{
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+    height: calc( 92.5vh - 31px );
+    background-position-y: 100px;
+    background-image: url("./situation.png");
+    &-wrapper{
+        width: 98%;
+        background: white;
+        margin: 0 auto;
+    }
     &-contents{
-        padding: 10px;
+        padding: 30px 10px;
         border: 1px solid #eee;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
     &-title{
         background: $main-color;
         display: inline-block;
         padding: 0 10px;
         font-size: 12pt;
-        color: $main-font-color;
+        color: white;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     }
@@ -18,25 +84,147 @@ $main-font-color: white;
         display: flex;
         flex-wrap: wrap;
     }
-    &-list > li{
-        margin: 20px 0;
+    &-list > div{
+        margin: 40px 0;
+        padding: 30px 0;
         display: flex;
+        border-left: 1px solid #eee;
         flex: auto;
-        min-width: 25%;
+        min-width: calc( 25% - 1px );
         flex-direction: column;
-        color: $main-color;
         cursor: pointer;
         justify-content: center;
         align-items: center;
+        @media (max-width: 700px){
+            margin: 0;
+            padding: 35px 0;
+            border: none;
+            border-bottom: 1px solid #eee;
+            &:first-child{
+                border-bottom: 1px solid #eee !important;
+            }
+            &:nth-child(5){
+                border-bottom: 1px solid #eee !important;
+            }
+    
+        }
+        &:first-child{
+            border:none;
+        }
+        &:nth-child(5){
+            border:none;
+        }
         & h3{
-            font-size: 1.2em;
+            font-size: 70px;
+            transition: 1.3s;
+            color: #333;
+            @media (max-width: 700px){
+                font-size: 28px;
+                margin: 0 10px;
+                
+            }
         }
         & p{
-            font-size: 0.8em;
+            font-size: 25px;
+            color: #333;
+            font-weight: bold;
+            @media (max-width: 700px){
+                font-size: 1.7vh;
+            }
         }
         & b{
             font-weight: 500;
-            font-size: 15px;
+            font-size: 40px;
+            @media (max-width: 700px){
+                font-size: 1.8vh;
+            }
         }
+    }
+    
+}
+.news{
+    margin-top: 10px;
+    background: $main-color;
+    color: white;
+    height: 100vh;
+    &-wrapper{
+        width: 95%;
+        margin: 0 auto;
+        height: 100%;
+        position: relative;
+    }
+    &-header{
+        color: white;
+        padding-top: 30px;
+    }
+    &-title{
+        padding: 10px 0px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    &-inDetail{
+        background: white;
+        display: block;
+        white-space: pre-line;
+        color: #333;
+        border-radius: 10px;
+        word-break: break-all;
+        padding: 10px;
+        max-height: 0;
+        transition: 0.7s;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        visibility: hidden;
+        
+    }
+    &-state{
+        display: none;
+    }
+    &-active{
+        visibility: visible;
+        max-height: 30000px;
+        transition: max-height 0.7s ease-in;
+    }
+    &-state:checked + &-title{
+        background: $main-color !important;
+        color: white !important;
+    }
+    &-con{
+        position: relative;
+        float: left;
+        height: 50px;
+        margin: 0 30px 0 0;
+        &::before{  
+            clear: both;
+            content: "";
+            position: absolute;
+            top: 16px;
+            left: 6px;
+            z-index: 1;
+            width: 11px;
+            height: 11px;
+            background: url(./newscon.png) no-repeat;
+        }
+    }
+    &-list{
+        overflow: scroll;
+        height: 90vh;
+        &::before{
+            clear: both;
+            content: "";
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            z-index: 1;
+            width: 2px;
+            height: 104%;
+            background: #eee;
+        }
+        & > li{
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        
     }
 }
