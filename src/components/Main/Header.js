@@ -1,7 +1,7 @@
-function Header(){
-    return(
+function Header() {
+    return (
         <div className="header">
-            BlindCorona
+            Blind Corona
         </div>
     )
 }
