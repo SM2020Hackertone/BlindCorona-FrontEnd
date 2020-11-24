@@ -2,6 +2,7 @@ import { useEffect,useState } from "react"
 import "./main.scss"
 import { GetStatus } from "../../actions/userAction"
 import SituationCard from "./SituationCard"
+import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 /*const data={
     createDt: "2020-11-23 09:33:42.564",
@@ -20,17 +21,25 @@ import { useDispatch, useSelector } from "react-redux";
     stdDay: "2020년 11월 23일 00시",
     updateDt: "null"
 }*/
-function Situation() {
+function Situation({props}) {
     const dispatch=useDispatch();
     const [data,setData] = useState(null);
     const [loading,setLoading] = useState(false);
     useEffect(()=>{
         setLoading(true);
-        dispatch(GetStatus("",""))
+        if(props.text){
+            axios.get(`http://172.30.1.58:5000/corona-info?text=${props.text}`)
             .then((res)=>{
-                setData(res.payload);
-                console.log(res);
+                setData(res.data.data);
+                console.log(res.data.data);
             })
+        }else{
+            dispatch(GetStatus("",""))
+                .then((res)=>{
+                    setData(res.payload);
+                    console.log(res);
+                })
+        }
         setLoading(false);
     },[])
     if(loading) return(<div>로딩중..</div>)

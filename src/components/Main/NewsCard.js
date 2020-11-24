@@ -41,7 +41,7 @@ function NewsCard({props}){
     return(
         <li>
             <div className="news-con"></div>          
-            <div onClick={showclose} className="news-title">{a.getMonth() + "/" +a.getDate()} | {props.title}</div>
+            <div onClick={showclose} dangerouslySetInnerHTML={{__html : a.getMonth() + "/" +a.getDate() + " " + props.title}} className="news-title"></div>
             <div style={DarkMode? {color:"#333", background: "white"} : {color: "white" , background: "black"}} className={"news-inDetail " + state}>
                 {data.content}
             </div>

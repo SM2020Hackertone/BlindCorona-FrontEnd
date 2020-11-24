@@ -3,7 +3,7 @@ import News from "./News"
 import Header from "./Header"
 import { useEffect, useState } from "react"
 
-function Test(){
+function Test({match}){
     const [page, setPage]=useState(0);
     function mouseWheel(e){
         console.log(e.nativeEvent.wheelDelta);
@@ -22,10 +22,13 @@ function Test(){
                 <Header></Header>
                 <div className="situation">
                     <div className="situation-wrapper">
+                        <div className="background-div">
+
+                        </div>
                         <div>
                             <h3 className="situation-title">전국</h3>
                         </div>
-                        <Situation></Situation>
+                        <Situation props={match.params}></Situation>
                     </div>
                 </div>
                 <News></News>
