@@ -8,6 +8,9 @@ Annyang.setLanguage("ko");
 function App() {
   const [state,setState]=useState("null");
   useEffect(()=>{
+    const speechMsg = new SpeechSynthesisUtterance();
+    speechMsg.text="마이크를 사용하시려면 m버튼을 눌러주세요";
+    window.speechSynthesis.speak(speechMsg);
     window.addEventListener("keydown", (e) => {
       if(e.key=="m"){
         if (Annyang) {
