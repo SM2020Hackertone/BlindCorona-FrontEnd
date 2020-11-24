@@ -3,20 +3,27 @@ import Main from "./components/Main"
 import Annyang from "annyang"
 import "./App.scss"
 import DarkMode from "./components/public/DarkMode"
-function Stt(){
-  if (Annyang) {
-    var commands = {
-      'hello': function() { alert('Hello world!'); }
-    };
-   
-    // Add our commands to annyang
-    Annyang.addCommands(commands);
-   
-    // Start listening.
-    Annyang.start();
-  }
-}
+import { GET_INFO } from "./actions/ActionTypes"
+import { useDispatch } from "react-redux"
+import { useState } from "react"
+import axios from "axios"
+
 function App() {
+  function Stt() {
+    Annyang.setLanguage('ko')
+    if (Annyang) {
+      var commands = {
+        '영실아 *tag': (tag) => {
+          axios.get(`http://172.30.1.58:5000?text=${tag}`)
+          .then((res)=>{
+            console.log(res);
+          })
+        }
+      };
+      Annyang.addCommands(commands);
+      Annyang.start();
+    }
+  }
   return (
     <>
       <DarkMode></DarkMode>

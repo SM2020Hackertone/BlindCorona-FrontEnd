@@ -22,6 +22,13 @@ export function GetContent(Params, Data){
     payload: data
   }
 }
+export function GetInfo(Params, Data){
+  const data = request("GET", USER_URL + "/corona-info", Params, Data);
+  return{
+    type: GET_CONTENT,
+    payload: data
+  }
+}
 export function DarkMode(state){
   return{
     type: DARK_MODE,
