@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 function App() {
-  useEffect(()=>{
+  const stt=()=>{
     if (Annyang) {
       var commands = {
         '영실아 *tag': (tag) => {
@@ -19,11 +19,11 @@ function App() {
       Annyang.addCommands(commands);
       Annyang.start();
     }
-  },[])
+  }
   return (
     <>
       <DarkMode></DarkMode>
-      <div className="next"></div>
+      <div onClick={stt} className="next"></div>
       <Router>
         <Switch>
           <Route exact path="/" component={Main}></Route>
