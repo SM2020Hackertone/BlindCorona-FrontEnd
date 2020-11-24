@@ -17,6 +17,7 @@ function App() {
             }
           };
           Annyang.addCommands(commands);
+          Annyang.start();
         }
       }
     })
