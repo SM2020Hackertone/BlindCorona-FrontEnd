@@ -8,15 +8,18 @@ Annyang.setLanguage("ko");
 function App() {
   const [state,setState]=useState("null");
   useEffect(()=>{
-    if (Annyang) {
-      var commands = {
-        '영실아 *tag': (tag) => {
-          window.location.href=tag
+    window.addEventListener("keydown", (e) => {
+      if(e.key=="m"){
+        if (Annyang) {
+          var commands = {
+            '영실아 *tag': (tag) => {
+              window.location.href=tag
+            }
+          };
+          Annyang.addCommands(commands);
         }
-      };
-      Annyang.addCommands(commands);
-      Annyang.start();
-    }
+      }
+    })
   },[])
   function scroll(){
     if(state=="null"){

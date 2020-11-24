@@ -37,6 +37,7 @@ body::-webkit-scrollbar{
     bottom: 10px;
     z-index: 99;
     left: 50%;
+    display: none;
     transition: 1s;
     width: 80px;
     border-radius: 50%;
@@ -45,6 +46,9 @@ body::-webkit-scrollbar{
     cursor: pointer;
     background-size: 100%;
     background-image: url("../../icon_arrow.png");
+    @media (max-width: 700px){
+        display: block;
+    }
 
 }
 .header{
